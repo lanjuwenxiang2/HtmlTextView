@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <com.example.myview.HtmlTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:tv1="abc"
+        app:tv1Size="20dp"
+        app:tv2="abc"
+        app:tv2Bold="false"
+        app:tv2Size="20dp"
+        app:tv3="abc"
+        app:tv2MarginL="10dp"
+        app:tv2MarginR="20dp"
+        app:tv3Color="@color/colorPrimary"
+        app:tv3Size="20dp" />
+</LinearLayout>
