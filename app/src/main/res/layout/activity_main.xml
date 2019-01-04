@@ -7,17 +7,27 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="abc"/>
+
+    <!--<com.example.myview.HtmlTextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--app:tv1="abc"-->
+        <!--app:tv1Size="20dp"-->
+        <!--app:tv2="abc"-->
+        <!--app:tv2Bold="false"-->
+        <!--app:tv2Size="20dp"-->
+        <!--app:tv3="abc"-->
+        <!--app:tv2MarginL="10dp"-->
+        <!--app:tv2MarginR="20dp"-->
+        <!--app:tv3Color="@color/colorPrimary"-->
+        <!--app:tv3Size="20dp" />-->
+
     <com.example.myview.HtmlTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:tv1="abc"
-        app:tv1Size="20dp"
-        app:tv2="abc"
-        app:tv2Bold="false"
-        app:tv2Size="20dp"
-        app:tv3="abc"
-        app:tv2MarginL="10dp"
-        app:tv2MarginR="20dp"
-        app:tv3Color="@color/colorPrimary"
-        app:tv3Size="20dp" />
+        app:tv1="abc"/>
 </LinearLayout>
