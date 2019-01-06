@@ -1,4 +1,4 @@
-package com.example.myview;
+package com.ljwx.htmltextview;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.myview", appContext.getPackageName());
+        assertEquals("com.example.htmltextview.test", appContext.getPackageName());
     }
 }

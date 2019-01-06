@@ -26,7 +26,7 @@
         <!--app:tv3Color="@color/colorPrimary"-->
         <!--app:tv3Size="20dp" />-->
 
-    <com.example.myview.HtmlTextView
+    <com.ljwx.myview.HtmlTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:tv1="abc"/>

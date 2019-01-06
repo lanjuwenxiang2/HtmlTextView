@@ -1,4 +1,4 @@
-package com.example.htmltextview;
+package com.ljwx.myview;
 
 import org.junit.Test;
 
