@@ -1,4 +1,4 @@
-package com.ljwx.myview;
+package com.ljwx.view;
 
 import org.junit.Test;
 
