@@ -1,19 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="HtmlTextView">
-        <attr name="tv1" format="string" />
-        <attr name="tv2" format="string" />
-        <attr name="tv3" format="string" />
-        <attr name="tv1Color" format="color" />
-        <attr name="tv2Color" format="color" />
-        <attr name="tv3Color" format="color" />
-        <attr name="tv1Size" format="dimension" />
-        <attr name="tv2Size" format="dimension" />
-        <attr name="tv3Size" format="dimension" />
-        <attr name="tv1Bold" format="boolean" />
-        <attr name="tv2Bold" format="boolean" />
-        <attr name="tv3Bold" format="boolean" />
-        <attr name="tv2MarginL" format="dimension"/>
-        <attr name="tv2MarginR" format="dimension"/>
+        <attr name="htvTv1String" format="string" />
+        <attr name="htvTv2String" format="string" />
+        <attr name="htvTv3String" format="string" />
+        <attr name="htvTv1Color" format="color" />
+        <attr name="htvTv2Color" format="color" />
+        <attr name="htvTv3Color" format="color" />
+        <attr name="htvTv1Size" format="dimension" />
+        <attr name="htvTv2Size" format="dimension" />
+        <attr name="htvTv3Size" format="dimension" />
+        <attr name="htvTv1Bold" format="boolean" />
+        <attr name="htvTv2Bold" format="boolean" />
+        <attr name="htvTv3Bold" format="boolean" />
+        <attr name="htvTv2MarginL" format="dimension" />
+        <attr name="htvTv2MarginR" format="dimension" />
+        <attr name="htvGravityMode" format="enum">
+            <enum name="single" value="0" />
+            <enum name="average" value="1" />
+        </attr>
+        <attr name="htvTv2Offset" format="dimension" />
+        <attr name="htvBaseLineMode" format="enum">
+            <enum name="bottom" value="0" />
+            <enum name="mid" value="1" />
+        </attr>
+        <attr name="htvDrawLeft" format="reference"/>
+        <attr name="htvDrawLeftWidth" format="dimension" />
+        <attr name="htvDrawLeftHeight" format="dimension" />
     </declare-styleable>
 </resources>

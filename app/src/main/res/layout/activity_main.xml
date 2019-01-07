@@ -10,24 +10,17 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="abc"/>
-
-    <!--<com.example.myview.HtmlTextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--app:tv1="abc"-->
-        <!--app:tv1Size="20dp"-->
-        <!--app:tv2="abc"-->
-        <!--app:tv2Bold="false"-->
-        <!--app:tv2Size="20dp"-->
-        <!--app:tv3="abc"-->
-        <!--app:tv2MarginL="10dp"-->
-        <!--app:tv2MarginR="20dp"-->
-        <!--app:tv3Color="@color/colorPrimary"-->
-        <!--app:tv3Size="20dp" />-->
+        android:text="abc" />
 
     <com.ljwx.view.HtmlTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:tv1="abc"/>
+        android:drawableLeft="@mipmap/game_stone2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:htvBaseLineMode="bottom"
+        app:htvGravityMode="average"
+        android:gravity="center_vertical"
+        app:htvTv1Size="22dp"
+        app:htvTv1String="abc"
+        app:htvTv3String="123"
+        app:htvTv2String="fasdfasd" />
 </LinearLayout>
