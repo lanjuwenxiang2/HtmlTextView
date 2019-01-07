@@ -19,8 +19,10 @@
         app:htvBaseLineMode="bottom"
         app:htvGravityMode="average"
         android:gravity="center_vertical"
+        app:htvDrawLeft="@mipmap/game_stone2"
         app:htvTv1Size="22dp"
         app:htvTv1String="abc"
         app:htvTv3String="123"
         app:htvTv2String="fasdfasd" />
+
 </LinearLayout>
