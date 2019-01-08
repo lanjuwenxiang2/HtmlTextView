@@ -6,22 +6,22 @@
 #### 属性介绍
 ```xml
 <com.ljwx.view.HtmlTextView
- android:layout_width="wrap_content"
- android:layout_height="wrap_content"
- android:layout_marginTop="10dp"
- app:htvBaseLineMode="mid"
- app:htvTv1Bold="false"
- app:htvTv1Color="#ff0000"
- app:htvTv1Size="12dp"
- app:htvTv1String="abc"
- app:htvTv2Bold="true"
- app:htvTv2Color="#00ff00"
- app:htvTv2Size="18dp"
- app:htvTv2String="中文"
- app:htvTv3Bold="false"
- app:htvTv3Color="#0000ff"
- app:htvTv3Size="25dp"
- app:htvTv3String="123(控件中间线对齐)" />
+ 	android:layout_width="wrap_content"
+ 	android:layout_height="wrap_content"
+ 	android:layout_marginTop="10dp"
+ 	app:htvBaseLineMode="mid"
+ 	app:htvTv1Bold="false"
+ 	app:htvTv1Color="#ff0000"
+ 	app:htvTv1Size="12dp"
+ 	app:htvTv1String="abc"
+ 	app:htvTv2Bold="true"
+ 	app:htvTv2Color="#00ff00"
+ 	app:htvTv2Size="18dp"
+ 	app:htvTv2String="中文"
+ 	app:htvTv3Bold="false"
+ 	app:htvTv3Color="#0000ff"
+ 	app:htvTv3Size="25dp"
+ 	app:htvTv3String="123(控件中间线对齐)" />
 ```
 |   特殊属性  | 介绍 |
 | --------:| :--: |
@@ -43,7 +43,7 @@ allprojects {
   ```
   在需要引用的module的build里添加
   ```java
-  dependencies {
+ dependencies {
 	implementation 'com.github.ljwx:HtmlTextView:1.1.0'
 }
   ```
