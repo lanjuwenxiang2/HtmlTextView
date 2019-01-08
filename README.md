@@ -13,6 +13,6 @@ allprojects {
   在需要引用的module的build里添加
   ```java
   dependencies {
-	        implementation 'com.github.ljwx:HtmlTextView:1.0.3'
+	        implementation 'com.github.ljwx:HtmlTextView:1.1.0'
 	}
   ```
