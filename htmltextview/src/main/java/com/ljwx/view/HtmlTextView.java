@@ -14,8 +14,11 @@ import com.ljwx.htmltextview.R;
 public final class HtmlTextView extends AppCompatTextView {
     private int defualtColor = Color.parseColor("#ff333333");
     private float defualtSize = getTextSize();
+    private int mNorColor ;
+    private float mNorSize;
+    private String mTvString ,mSplitString;
     private String mTv1String, mTv2String, mTv3String;
-    private int mTv1Color, mTv2Color, mTv3Color;
+    private int mTv1Color = defualtColor, mTv2Color = defualtColor, mTv3Color = defualtColor;
     private float mTv1Size, mTv2Size, mTv3Size;
     private float tv1MarBtm, tv2MarBtm, tv3MarBtm;
     private boolean tv1Bold, tv2Bold, tv3Bold;
@@ -36,27 +39,31 @@ public final class HtmlTextView extends AppCompatTextView {
     public HtmlTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         TypedArray attr = context.obtainStyledAttributes(attrs, R.styleable.HtmlTextView);
-        mTv1String = attr.getString(R.styleable.HtmlTextView_htvTv1String);
-        mTv2String = attr.getString(R.styleable.HtmlTextView_htvTv2String);
-        mTv3String = attr.getString(R.styleable.HtmlTextView_htvTv3String);
-        mTv1Color = attr.getColor(R.styleable.HtmlTextView_htvTv1Color, defualtColor);
-        mTv2Color = attr.getColor(R.styleable.HtmlTextView_htvTv2Color, defualtColor);
-        mTv3Color = attr.getColor(R.styleable.HtmlTextView_htvTv3Color, defualtColor);
-        mTv1Size = attr.getDimension(R.styleable.HtmlTextView_htvTv1Size, defualtSize);
-        mTv2Size = attr.getDimension(R.styleable.HtmlTextView_htvTv2Size, defualtSize);
-        mTv3Size = attr.getDimension(R.styleable.HtmlTextView_htvTv3Size, defualtSize);
-        tv1Bold = attr.getBoolean(R.styleable.HtmlTextView_htvTv1Bold, false);
-        tv2Bold = attr.getBoolean(R.styleable.HtmlTextView_htvTv2Bold, false);
-        tv3Bold = attr.getBoolean(R.styleable.HtmlTextView_htvTv3Bold, false);
-        tv1MarBtm = attr.getDimension(R.styleable.HtmlTextView_htvTv1MarginBottom, 0f);
-        tv2MarBtm = attr.getDimension(R.styleable.HtmlTextView_htvTv2MarginBottom, 0f);
-        tv3MarBtm = attr.getDimension(R.styleable.HtmlTextView_htvTv3MarginBottom, 0f);
-        mTv2MarginLeft = attr.getDimension(R.styleable.HtmlTextView_htvTv2MarginL, 0f);
-        mTv2MarginRight = attr.getDimension(R.styleable.HtmlTextView_htvTv2MarginR, 0f);
-        mGravityMode = attr.getInt(R.styleable.HtmlTextView_htvGravityMode, 0);
-        mTv2Offset = attr.getDimension(R.styleable.HtmlTextView_htvTv2Offset, 0f);
-        mLineMode = attr.getInt(R.styleable.HtmlTextView_htvBaseLineMode, 0);
-        initPaint();
+        mNorColor = attr.getColor(R.styleable.HtmlTextView_htvTvNorColor, defualtColor);
+        mNorSize = attr.getDimension(R.styleable.HtmlTextView_htvTvNorSize, defualtSize);
+        mTvString = attr.getString(R.styleable.HtmlTextView_htvTvString);
+        mSplitString = attr.getString(R.styleable.HtmlTextView_htvTvSplitString);
+        mTv1String = attr.getString(R.styleable.HtmlTextView_htvLeftString);
+        mTv2String = attr.getString(R.styleable.HtmlTextView_htvCenterString);
+        mTv3String = attr.getString(R.styleable.HtmlTextView_htvRightString);
+        mTv1Color = attr.getColor(R.styleable.HtmlTextView_htvLeftColor, mNorColor);
+        mTv2Color = attr.getColor(R.styleable.HtmlTextView_htvCenterColor, mNorColor);
+        mTv3Color = attr.getColor(R.styleable.HtmlTextView_htvRightColor, mNorColor);
+        mTv1Size = attr.getDimension(R.styleable.HtmlTextView_htvLeftSize, mNorSize);
+        mTv2Size = attr.getDimension(R.styleable.HtmlTextView_htvCenterSize, mNorSize);
+        mTv3Size = attr.getDimension(R.styleable.HtmlTextView_htvRightSize, mNorSize);
+        tv1Bold = attr.getBoolean(R.styleable.HtmlTextView_htvLeftBold, false);
+        tv2Bold = attr.getBoolean(R.styleable.HtmlTextView_htvCenterBold, false);
+        tv3Bold = attr.getBoolean(R.styleable.HtmlTextView_htvRightBold, false);
+        tv1MarBtm = attr.getDimension(R.styleable.HtmlTextView_htvLeftMarginBottom, 0f);
+        tv2MarBtm = attr.getDimension(R.styleable.HtmlTextView_htvCenterMarginBottom, 0f);
+        tv3MarBtm = attr.getDimension(R.styleable.HtmlTextView_htvRightMarginBottom, 0f);
+        mTv2MarginLeft = attr.getDimension(R.styleable.HtmlTextView_htvCenterMarginLeft, 0f);
+        mTv2MarginRight = attr.getDimension(R.styleable.HtmlTextView_htvCenterMarginRight, 0f);
+        mGravityMode = attr.getInt(R.styleable.HtmlTextView_htvGravityType, 0);
+        mTv2Offset = attr.getDimension(R.styleable.HtmlTextView_htvCenterOffset, 0f);
+        mLineMode = attr.getInt(R.styleable.HtmlTextView_htvBaseLineType, 0);
+        init();
         attr.recycle();
     }
 
@@ -64,7 +71,7 @@ public final class HtmlTextView extends AppCompatTextView {
         super(context, attrs, defStyleAttr);
     }
 
-    private void initPaint() {
+    private void init() {
         if (!TextUtils.isEmpty(mTv1String)) {
             mPaint1.setFakeBoldText(tv1Bold);
             mPaint1.setTextSize(mTv1Size);
@@ -85,6 +92,20 @@ public final class HtmlTextView extends AppCompatTextView {
         }
         if (mMaxPaint == null) {
             mMaxPaint = getPaint();
+        }
+        if (mTvString != null && mSplitString != null){
+            if (mTvString.contains(mSplitString)){
+                String[] split = mTvString.split(mSplitString);
+                if (split.length == 1){
+                    mTv1String = split[0];
+                    mTv2String = mSplitString;
+                }
+                if (split.length == 2){
+                    mTv1String = split[0];
+                    mTv2String = mSplitString;
+                    mTv3String = split[1];
+                }
+            }
         }
     }
 

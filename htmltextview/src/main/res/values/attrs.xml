@@ -1,31 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="HtmlTextView">
-        <attr name="htvTv1String" format="string" />
-        <attr name="htvTv2String" format="string" />
-        <attr name="htvTv3String" format="string" />
-        <attr name="htvTv1Color" format="color" />
-        <attr name="htvTv2Color" format="color" />
-        <attr name="htvTv3Color" format="color" />
-        <attr name="htvTv1Size" format="dimension" />
-        <attr name="htvTv2Size" format="dimension" />
-        <attr name="htvTv3Size" format="dimension" />
-        <attr name="htvTv1Bold" format="boolean" />
-        <attr name="htvTv2Bold" format="boolean" />
-        <attr name="htvTv3Bold" format="boolean" />
-        <attr name="htvTv1MarginBottom" format="dimension" />
-        <attr name="htvTv2MarginBottom" format="dimension" />
-        <attr name="htvTv3MarginBottom" format="dimension" />
-        <attr name="htvTv2MarginL" format="dimension" />
-        <attr name="htvTv2MarginR" format="dimension" />
-        <attr name="htvGravityMode" format="enum">
+        <attr name="htvTvString" format="string" />
+        <attr name="htvTvNorSize" format="dimension" />
+        <attr name="htvTvNorColor" format="color" />
+        <attr name="htvTvSplitString" format="string" />
+        <attr name="htvSpliSize" format="dimension" />
+        <attr name="htvSpliColor" format="color" />
+
+        <attr name="htvLeftString" format="string" />
+        <attr name="htvCenterString" format="string" />
+        <attr name="htvRightString" format="string" />
+        <attr name="htvLeftColor" format="color" />
+        <attr name="htvCenterColor" format="color" />
+        <attr name="htvRightColor" format="color" />
+        <attr name="htvLeftSize" format="dimension" />
+        <attr name="htvCenterSize" format="dimension" />
+        <attr name="htvRightSize" format="dimension" />
+        <attr name="htvLeftBold" format="boolean" />
+        <attr name="htvCenterBold" format="boolean" />
+        <attr name="htvRightBold" format="boolean" />
+        <attr name="htvLeftMarginBottom" format="dimension" />
+        <attr name="htvCenterMarginBottom" format="dimension" />
+        <attr name="htvRightMarginBottom" format="dimension" />
+        <attr name="htvCenterMarginLeft" format="dimension" />
+        <attr name="htvCenterMarginRight" format="dimension" />
+        <attr name="htvGravityType" format="enum">
             <enum name="single" value="0" />
             <enum name="average" value="1" />
         </attr>
-        <attr name="htvTv2Offset" format="dimension" />
-        <attr name="htvBaseLineMode" format="enum">
+        <attr name="htvCenterOffset" format="dimension" />
+        <attr name="htvBaseLineType" format="enum">
             <enum name="bottom" value="0" />
-            <enum name="mid" value="1" />
+            <enum name="middle" value="1" />
         </attr>
         <attr name="htvDrawLeft" format="reference" />
         <attr name="htvDrawLeftWidth" format="dimension" />
