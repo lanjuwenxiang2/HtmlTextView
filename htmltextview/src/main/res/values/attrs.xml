@@ -13,6 +13,9 @@
         <attr name="htvTv1Bold" format="boolean" />
         <attr name="htvTv2Bold" format="boolean" />
         <attr name="htvTv3Bold" format="boolean" />
+        <attr name="htvTv1MarginBottom" format="dimension" />
+        <attr name="htvTv2MarginBottom" format="dimension" />
+        <attr name="htvTv3MarginBottom" format="dimension" />
         <attr name="htvTv2MarginL" format="dimension" />
         <attr name="htvTv2MarginR" format="dimension" />
         <attr name="htvGravityMode" format="enum">
@@ -24,7 +27,7 @@
             <enum name="bottom" value="0" />
             <enum name="mid" value="1" />
         </attr>
-        <attr name="htvDrawLeft" format="reference"/>
+        <attr name="htvDrawLeft" format="reference" />
         <attr name="htvDrawLeftWidth" format="dimension" />
         <attr name="htvDrawLeftHeight" format="dimension" />
     </declare-styleable>
