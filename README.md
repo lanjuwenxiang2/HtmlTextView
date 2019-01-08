@@ -20,7 +20,7 @@
             app:htvTv3Size="25dp"
             app:htvTv3String="123(控件中间线对齐)" />
 ```
-|   属性名  | 介绍 |
+|   特殊属性  | 介绍 |
 | --------:| :--: |
 | htvTv2MarginL  | 中间文字左边间距 |
 | htvTv2MarginR  | 中间文字右边间距 |
