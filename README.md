@@ -6,22 +6,23 @@
 #### 属性介绍
 ```xml
 <com.ljwx.view.HtmlTextView
- 	android:layout_width="wrap_content"
- 	android:layout_height="wrap_content"
- 	android:layout_marginTop="10dp"
- 	app:htvBaseLineMode="mid"
- 	app:htvTv1Bold="false"
- 	app:htvTv1Color="#ff0000"
- 	app:htvTv1Size="12dp"
- 	app:htvTv1String="abc"
- 	app:htvTv2Bold="true"
- 	app:htvTv2Color="#00ff00"
- 	app:htvTv2Size="18dp"
- 	app:htvTv2String="中文"
- 	app:htvTv3Bold="false"
- 	app:htvTv3Color="#0000ff"
- 	app:htvTv3Size="25dp"
- 	app:htvTv3String="123(控件中间线对齐)" />
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_marginTop="10dp"
+	app:htvCenterBold="false"
+	app:htvCenterColor="#00ff00"
+	app:htvCenterMarginLeft="5dp"
+	app:htvCenterMarginRight="20dp"
+	app:htvCenterSize="14dp"
+	app:htvCenterString="中文"
+	app:htvLeftBold="false"
+	app:htvLeftColor="#ff0000"
+	app:htvLeftSize="12dp"
+	app:htvLeftString="abc"
+	app:htvRightBold="false"
+	app:htvRightColor="#0000ff"
+	app:htvRightSize="19dp"
+	app:htvRightString="123(设置中间文字左右间距)" />
 ```
 |   特殊属性  | 介绍 |
 | --------:| :--: |
