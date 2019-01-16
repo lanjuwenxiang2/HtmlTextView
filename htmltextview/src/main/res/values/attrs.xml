@@ -37,5 +37,7 @@
         <attr name="htvDrawLeft" format="reference" />
         <attr name="htvDrawLeftWidth" format="dimension" />
         <attr name="htvDrawLeftHeight" format="dimension" />
+        <attr name="htvDrawRightWidth" format="dimension" />
+        <attr name="htvDrawRightHeight" format="dimension" />
     </declare-styleable>
 </resources>
