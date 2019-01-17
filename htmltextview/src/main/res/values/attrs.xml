@@ -34,7 +34,6 @@
             <enum name="bottom" value="0" />
             <enum name="middle" value="1" />
         </attr>
-        <attr name="htvDrawLeft" format="reference" />
         <attr name="htvDrawLeftWidth" format="dimension" />
         <attr name="htvDrawLeftHeight" format="dimension" />
         <attr name="htvDrawRightWidth" format="dimension" />

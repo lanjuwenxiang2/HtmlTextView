@@ -14,7 +14,7 @@ import android.util.Log;
 import com.ljwx.htmltextview.R;
 
 public final class HtmlTextView extends AppCompatTextView {
-    private int defualtColor = Color.parseColor("#ff333333");
+    private int defualtColor = getCurrentTextColor();
     private float defualtSize = getTextSize();
     private int mNorColor;
     private float mNorSize;
