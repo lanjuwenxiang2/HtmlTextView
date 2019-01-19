@@ -24,7 +24,7 @@
             android:orientation="vertical">
 
             <com.ljwx.view.HtmlTextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:htvCenterBold="true"
@@ -38,10 +38,11 @@
                 app:htvRightBold="false"
                 app:htvRightColor="#0000ff"
                 app:htvRightSize="19dp"
+                app:htvGravityType="average"
                 app:htvRightString="123(常规显示)" />
 
             <com.ljwx.view.HtmlTextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginTop="10dp"
                 android:drawableLeft="@mipmap/game_stone2"
@@ -57,6 +58,7 @@
                 app:htvDrawRightHeight="30dp"
                 app:htvDrawRightWidth="40dp"
                 app:htvLeftBold="false"
+                app:htvGravityType="single"
                 app:htvLeftColor="#ff0000"
                 app:htvLeftSize="12dp"
                 app:htvLeftString="abc"
