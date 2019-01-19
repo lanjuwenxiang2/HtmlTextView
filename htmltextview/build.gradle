@@ -6,8 +6,6 @@ group='com.github.ljwx'
 
 android {
     compileSdkVersion 28
-
-
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 28
