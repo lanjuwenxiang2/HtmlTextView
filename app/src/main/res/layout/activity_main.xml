@@ -13,121 +13,131 @@
 
     </data>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <com.ljwx.view.HtmlTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:htvCenterBold="true"
-            app:htvCenterColor="#00ff00"
-            app:htvCenterSize="14dp"
-            app:htvCenterString="中文"
-            app:htvLeftBold="false"
-            app:htvLeftColor="#ff0000"
-            app:htvLeftSize="12dp"
-            app:htvLeftString="abc"
-            app:htvRightBold="false"
-            app:htvRightColor="#0000ff"
-            app:htvRightSize="19dp"
-            app:htvRightString="123(常规显示)" />
-
-        <com.ljwx.view.HtmlTextView
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_marginTop="10dp"
-            android:drawableLeft="@mipmap/game_stone2"
-            android:drawableRight="@mipmap/game_stone2"
-            app:htvCenterBold="false"
-            android:text=""
-            app:htvCenterColor="#00ff00"
-            app:htvCenterMarginLeft="5dp"
-            app:htvCenterMarginRight="20dp"
-            app:htvCenterSize="14dp"
-            app:htvCenterString="中文"
-            app:htvDrawLeftHeight="30dp"
-            app:htvDrawLeftWidth="40dp"
-            app:htvDrawRightHeight="30dp"
-            app:htvDrawRightWidth="40dp"
-            app:htvLeftBold="false"
-            app:htvLeftColor="#ff0000"
-            app:htvLeftSize="12dp"
-            app:htvLeftString="abc"
-            app:htvRightBold="false"
-            app:htvRightColor="#0000ff"
-            app:htvRightSize="19dp"
-            app:htvRightString="123(设置中间文字左右间距)" />
-
-        <com.ljwx.view.HtmlTextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:htvCenterBold="true"
-            app:htvCenterColor="#00ff00"
-            app:htvCenterMarginBottom="0.5dp"
-            app:htvCenterSize="20dp"
-            app:htvCenterString="中文"
-            app:htvGravityType="average"
-            app:htvLeftBold="false"
-            app:htvLeftColor="#ff0000"
-            app:htvLeftSize="12dp"
-            app:htvLeftString="abc"
-            app:htvRightBold="false"
-            app:htvRightColor="#0000ff"
-            app:htvRightSize="19dp"
-            app:htvRightString="123(分散)" />
+            android:gravity="center_vertical"
+            android:orientation="vertical">
 
-        <com.ljwx.view.HtmlTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:htvCenterBold="true"
-            app:htvCenterColor="#00ff00"
-            app:htvCenterMarginBottom="0.5dp"
-            app:htvCenterOffset="50dp"
-            app:htvCenterSize="20dp"
-            app:htvCenterString="中文"
-            app:htvGravityType="average"
-            app:htvLeftBold="false"
-            app:htvLeftColor="#ff0000"
-            app:htvLeftSize="12dp"
-            app:htvLeftString="abc"
-            app:htvRightBold="false"
-            app:htvRightColor="#0000ff"
-            app:htvRightSize="19dp"
-            app:htvRightString="123(偏移)" />
+            <com.ljwx.view.HtmlTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:htvCenterBold="true"
+                app:htvCenterColor="#00ff00"
+                app:htvCenterSize="14dp"
+                app:htvCenterString="中文"
+                app:htvLeftBold="false"
+                app:htvLeftColor="#ff0000"
+                app:htvLeftSize="12dp"
+                app:htvLeftString="abcAAAAAAAAA"
+                app:htvRightBold="false"
+                app:htvRightColor="#0000ff"
+                app:htvRightSize="19dp"
+                app:htvRightString="123(常规显示)" />
 
-        <com.ljwx.view.HtmlTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:htvBaseLineType="middle"
-            app:htvCenterBold="true"
-            app:htvCenterColor="#00ff00"
-            app:htvCenterSize="18dp"
-            app:htvCenterString="中文"
-            app:htvLeftBold="false"
-            app:htvLeftColor="#ff0000"
-            app:htvLeftSize="12dp"
-            app:htvLeftString="abc"
-            app:htvRightBold="false"
-            app:htvRightColor="#0000ff"
-            app:htvRightSize="25dp"
-            app:htvRightString="123(控件中间线对齐)" />
+            <com.ljwx.view.HtmlTextView
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@mipmap/game_stone2"
+                android:drawableRight="@mipmap/game_stone2"
+                app:htvCenterBold="false"
+                app:htvCenterColor="#00ff00"
+                app:htvCenterMarginLeft="0dp"
+                app:htvCenterMarginRight="00dp"
+                app:htvCenterSize="14dp"
+                app:htvCenterString="中文"
+                app:htvDrawLeftHeight="30dp"
+                app:htvDrawLeftWidth="40dp"
+                app:htvDrawRightHeight="30dp"
+                app:htvDrawRightWidth="40dp"
+                app:htvLeftBold="false"
+                app:htvLeftColor="#ff0000"
+                app:htvLeftSize="12dp"
+                app:htvLeftString="abc"
+                app:htvRightBold="false"
+                app:htvRightColor="#0000ff"
+                app:htvRightSize="19dp"
+                app:htvRightString="123(设置中间文字左右间距)" />
 
-        <com.ljwx.view.HtmlTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:htvCenterColor="@color/colorAccent"
-            app:htvCenterSize="18dp"
-            app:htvCenterString="中文"
-            app:htvLeftString="abc"
-            app:htvRightString="123"
-            app:htvTvNorColor="@color/colorPrimary"
-            app:htvTvNorSize="14dp" />
-    </LinearLayout>
+            <com.ljwx.view.HtmlTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:htvCenterBold="true"
+                app:htvCenterColor="#00ff00"
+                app:htvCenterMarginBottom="0.5dp"
+                app:htvCenterSize="20dp"
+                app:htvCenterString="中文"
+                app:htvGravityType="average"
+                app:htvLeftBold="false"
+                app:htvLeftColor="#ff0000"
+                app:htvLeftSize="12dp"
+                app:htvLeftString="abc"
+                app:htvRightBold="false"
+                app:htvRightColor="#0000ff"
+                app:htvRightSize="19dp"
+                app:htvRightString="123(分散)" />
+
+            <com.ljwx.view.HtmlTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:htvCenterBold="true"
+                app:htvCenterColor="#00ff00"
+                app:htvCenterMarginBottom="0.5dp"
+                app:htvCenterOffset="50dp"
+                app:htvCenterSize="20dp"
+                app:htvCenterString="中文"
+                app:htvGravityType="average"
+                app:htvLeftBold="false"
+                app:htvLeftColor="#ff0000"
+                app:htvLeftSize="12dp"
+                app:htvLeftString="abc"
+                app:htvRightBold="false"
+                app:htvRightColor="#0000ff"
+                app:htvRightSize="19dp"
+                app:htvRightString="123(偏移)" />
+
+            <com.ljwx.view.HtmlTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:htvBaseLineType="middle"
+                app:htvCenterBold="true"
+                app:htvCenterColor="#00ff00"
+                app:htvCenterSize="18dp"
+                app:htvCenterString="中文"
+                app:htvLeftBold="false"
+                app:htvLeftColor="#ff0000"
+                app:htvLeftSize="12dp"
+                app:htvLeftString="abc"
+                app:htvRightBold="false"
+                app:htvRightColor="#0000ff"
+                app:htvRightSize="25dp"
+                app:htvRightString="123(控件中间线对齐)" />
+
+            <com.ljwx.view.HtmlTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:htvCenterColor="@color/colorAccent"
+                app:htvCenterSize="18dp"
+                app:htvCenterString="中文"
+                app:htvLeftString="abc"
+                app:htvRightString="123"
+                app:htvTvNorColor="@color/colorPrimary"
+                app:htvTvNorSize="14dp" />
+
+            <com.ljwx.view.HtmlTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:htvLeftString="abc"
+                app:htvRightString="中文" />
+        </LinearLayout>
+    </ScrollView>
 </layout>

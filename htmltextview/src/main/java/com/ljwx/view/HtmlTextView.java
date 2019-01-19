@@ -3,7 +3,6 @@ package com.ljwx.view;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.AppCompatTextView;
@@ -35,7 +34,7 @@ public final class HtmlTextView extends AppCompatTextView {
     private Float mMaxBaseLine;
     private float mDrawableLeftWidth, mDrawableRightWidth, mDrawableLeftHeight, mDrawableRightHeight;
     private Drawable[] drawables;
-    float mDrawRightX = 0;
+    private float mLeftWidth, mCenterWidth, mRightWidth;
 
     public HtmlTextView(Context context) {
         super(context, null);
@@ -146,7 +145,7 @@ public final class HtmlTextView extends AppCompatTextView {
         int width = MeasureSpec.getSize(widthMeasureSpec);
 
         String txt = getText().toString();
-        if (MeasureSpec.AT_MOST == heightMode) {
+        if (MeasureSpec.AT_MOST == heightMode || MeasureSpec.UNSPECIFIED == heightMode) {
             float ptm = (float) (getPaddingTop() + getPaddingBottom() + 0.5);
             if (!TextUtils.isEmpty(txt)) {
 //                height = (int) (getPaint().descent() - getPaint().ascent() + ptm);
@@ -195,51 +194,56 @@ public final class HtmlTextView extends AppCompatTextView {
     private void drawTv(Canvas canvas) {
         if (TextUtils.isEmpty(getText())) {
             mMaxBaseLine = (getHeight() / 2) + (Math.abs(mMaxPaint.ascent() + mMaxPaint.descent()) / 2);
-            this.drawTv1(canvas);
-            this.drawTv2(canvas);
-            this.drawTv3(canvas);
+            this.drawLeft(canvas);
+            this.drawCenter(canvas);
+            this.drawRight(canvas);
         }
 
     }
 
-    private final void drawTv1(Canvas canvas) {
+    private final void drawLeft(Canvas canvas) {
         if (mTv1String != null) {
-            float x = getPaddingLeft() + mDrawableLeftWidth;
-            mDrawRightX = x + mPaint1.measureText(mTv1String);
-            canvas.drawText(mTv1String, x, countBaseLine(mPaint1) - tv1MarBtm, mPaint1);
+            float xStartPoint = getPaddingLeft() + mDrawableLeftWidth;
+            canvas.drawText(mTv1String, xStartPoint, countBaseLine(mPaint1) - tv1MarBtm, mPaint1);
+            mLeftWidth = xStartPoint + mPaint1.measureText(mTv1String);
+            Log.e("ljwx", "start:" + xStartPoint + "-leftWidth:" + mLeftWidth);
         }
 
     }
 
-    private final void drawTv2(Canvas canvas) {
-        if (mTv1String != null && mTv2String != null) {
-            float lx2 = getPaddingLeft() + mPaint1.measureText(mTv1String) + mTv2MarginLeft + mDrawableLeftWidth;
-            int midx = (getWidth() - getPaddingLeft() - getPaddingRight()) / 2;
+    private final void drawCenter(Canvas canvas) {
+        if (mTv2String != null) {
+            float xStartPoint = mTv2MarginLeft + mLeftWidth;
+            //位置均分
             if (mGravityMode != 0) {
-                lx2 = midx - mPaint2.measureText(mTv2String) / 2;
+                int midx = (getWidth() - getPaddingLeft() - getPaddingRight()) / 2;
+                xStartPoint = midx - mPaint2.measureText(mTv2String) / 2;
+                //均分时偏移
                 if (mTv2Offset != 0) {
-                    lx2 = midx - mTv2Offset;
+                    xStartPoint = midx - mTv2Offset;
                 }
-
+                //均分没有right时
                 if (this.mTv3String == null) {
-                    lx2 = getWidth() - getPaddingRight() - mPaint2.measureText(mTv2String);
+                    xStartPoint = getWidth() - getPaddingRight() - mPaint2.measureText(mTv2String);
                 }
             }
-            mDrawRightX = lx2 + mPaint2.measureText(mTv2String);
-            canvas.drawText(mTv2String, lx2, countBaseLine(mPaint2) - tv2MarBtm, mPaint2);
+            canvas.drawText(mTv2String, xStartPoint, countBaseLine(mPaint2) - tv2MarBtm, mPaint2);
+            mCenterWidth = mTv2MarginLeft + mTv2MarginRight + mPaint2.measureText(mTv2String);
+            Log.e("ljwx", "start:" + xStartPoint + "-CenterWidth:" + mCenterWidth);
         }
 
     }
 
-    private final void drawTv3(Canvas canvas) {
-        if (mTv1String != null && mTv2String != null && mTv3String != null) {
-            float lx3 = getPaddingLeft() + mTv2MarginLeft + mTv2MarginRight +
-                    mPaint1.measureText(mTv1String) + mPaint2.measureText(mTv2String) + mDrawableLeftWidth;
+    private final void drawRight(Canvas canvas) {
+        if (mTv3String != null) {
+            float xStartPoint = mLeftWidth + mCenterWidth;
+            //位置均分
             if (mGravityMode != 0) {
-                lx3 = (float) (this.getWidth() - this.getPaddingRight()) - mPaint3.measureText(mTv3String);
+                xStartPoint = (float) (this.getWidth() - this.getPaddingRight()) - mPaint3.measureText(mTv3String);
             }
-            mDrawRightX = lx3 + mPaint3.measureText(mTv3String);
-            canvas.drawText(mTv3String, lx3, countBaseLine(mPaint3) - tv3MarBtm, mPaint3);
+            canvas.drawText(mTv3String, xStartPoint, countBaseLine(mPaint3) - tv3MarBtm, mPaint3);
+            mRightWidth = xStartPoint + mPaint3.measureText(mTv3String);
+            Log.e("ljwx", "start:" + xStartPoint + "-RightWidth:" + mRightWidth);
         }
     }
 
@@ -268,7 +272,8 @@ public final class HtmlTextView extends AppCompatTextView {
             int y = getHeight() / 2 - right.getIntrinsicHeight() / 2;
             drawables[0].setBounds(x, y, right.getIntrinsicWidth() + x, right.getIntrinsicHeight() + y);
             if (mDrawableRightWidth > 0 && mDrawableRightHeight > 0) {
-                int x2 = (int) ((getWidth() >= mDrawRightX + mDrawableRightWidth) ? (mDrawRightX) : (getWidth() - mDrawableRightWidth));
+                float mDrawRightXStartPoint = mLeftWidth + mCenterWidth + mRightWidth + mDrawableLeftWidth;
+                int x2 = (int) ((getWidth() >= mDrawRightXStartPoint + mDrawableRightWidth) ? (mDrawRightXStartPoint) : (getWidth() - mDrawableRightWidth));
                 int y2 = (int) (getHeight() / 2 - mDrawableRightHeight / 2);
                 right.setBounds(x2, y2, (int) mDrawableRightWidth + x2, (int) mDrawableRightHeight + y2);
                 right.draw(canvas);
