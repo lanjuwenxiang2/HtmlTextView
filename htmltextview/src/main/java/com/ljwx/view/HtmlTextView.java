@@ -205,7 +205,6 @@ public final class HtmlTextView extends AppCompatTextView {
             canvas.drawText(mTv1String, xStartPoint, countBaseLine(mPaint1) - tv1MarBtm, mPaint1);
             mLeftWidth = xStartPoint + mPaint1.measureText(mTv1String);
         }
-
     }
 
     private final void drawCenter(Canvas canvas) {
