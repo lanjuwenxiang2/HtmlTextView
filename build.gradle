@@ -5,14 +5,14 @@ buildscript {
     repositories {
         google()
         jcenter()
-        
+
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.1'
+        classpath 'com.android.tools.build:gradle:3.2.1'
         //加上这两行
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.novoda:bintray-release:0.8.0'
+        classpath 'com.novoda:bintray-release:0.9'
     }
 }
 
@@ -20,14 +20,24 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url 'https://dl.bintray.com/ljwx/maven' }
+//        maven { url 'https://dl.bintray.com/ljwx/maven' }
+    }
+//    tasks.withType(Javadoc) {
+//        options.addStringOption('Xdoclint:none', '-quiet')
+//        options.addStringOption('encoding', 'UTF-8')
+//    }
+    tasks.withType(Javadoc) {
+        options {
+            encoding "UTF-8"
+            charSet 'UTF-8'
+        }
     }
 }
-
+//tasks.getByPath(":htmltextview:mavenAndroidJavadocs").enabled = false
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
 // 指定javadoc UTF-8格式
 task javadoc(type: Javadoc) {
-    options.encoding = "utf-8"
+    options.encoding = "UTF-8"
 }

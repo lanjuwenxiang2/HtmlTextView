@@ -43,8 +43,18 @@ repositories {
 }
 
 publish {
-    userOrg = 'ljwx'      // bintray注册的用户名
-    groupId = 'com.bintray.library'
-    artifactId = 'HtmlTextView'// bintray创建的package
+    userOrg = 'ljwx'
+    groupId = 'com.ljwx.view'
+    artifactId = 'HtmlTextView'
     publishVersion = '1.0.0'
+    desc='my first bintray'
+}
+
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
+}
+task javadoc(type: Javadoc) {
+    options.encoding = "UTF-8"
 }
