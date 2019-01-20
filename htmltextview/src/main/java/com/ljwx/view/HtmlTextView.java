@@ -16,8 +16,9 @@ public final class HtmlTextView extends AppCompatTextView {
     private float defualtSize = getTextSize();
     private int mNorColor;
     private float mNorSize;
+
     private String mTvString, mSplitString;
-    private String mTv1String = "", mTv2String = "", mTv3String = "";
+    private String mLeftString = "", mCenterString = "", mRightString = "";
     private int mTv1Color = defualtColor, mTv2Color = defualtColor, mTv3Color = defualtColor;
     private float mTv1Size, mTv2Size, mTv3Size;
     private float tv1MarBtm, tv2MarBtm, tv3MarBtm;
@@ -46,9 +47,9 @@ public final class HtmlTextView extends AppCompatTextView {
         mNorSize = attr.getDimension(R.styleable.HtmlTextView_htvTvNorSize, defualtSize);
         mTvString = attr.getString(R.styleable.HtmlTextView_htvTvString);
         mSplitString = attr.getString(R.styleable.HtmlTextView_htvTvSplitString);
-        mTv1String = attr.getString(R.styleable.HtmlTextView_htvLeftString);
-        mTv2String = attr.getString(R.styleable.HtmlTextView_htvCenterString);
-        mTv3String = attr.getString(R.styleable.HtmlTextView_htvRightString);
+        mLeftString = attr.getString(R.styleable.HtmlTextView_htvLeftString);
+        mCenterString = attr.getString(R.styleable.HtmlTextView_htvCenterString);
+        mRightString = attr.getString(R.styleable.HtmlTextView_htvRightString);
         mTv1Color = attr.getColor(R.styleable.HtmlTextView_htvLeftColor, mNorColor);
         mTv2Color = attr.getColor(R.styleable.HtmlTextView_htvCenterColor, mNorColor);
         mTv3Color = attr.getColor(R.styleable.HtmlTextView_htvRightColor, mNorColor);
@@ -83,19 +84,19 @@ public final class HtmlTextView extends AppCompatTextView {
     }
 
     private void init() {
-        if (!TextUtils.isEmpty(mTv1String)) {
+        {
             mPaint1.setFakeBoldText(tv1Bold);
             mPaint1.setTextSize(mTv1Size);
             mPaint1.setColor(mTv1Color);
             mMaxPaint = mPaint1;
         }
-        if (!TextUtils.isEmpty(mTv2String) && !TextUtils.isEmpty(mTv1String)) {
+        {
             mPaint2.setFakeBoldText(tv2Bold);
             mPaint2.setTextSize(mTv2Size);
             mPaint2.setColor(mTv2Color);
             mMaxPaint = mPaint2.getTextSize() >= mPaint1.getTextSize() ? mPaint2 : mPaint1;
         }
-        if (!TextUtils.isEmpty(mTv3String) && !TextUtils.isEmpty(mTv1String) && !TextUtils.isEmpty(mTv3String)) {
+        {
             mPaint3.setFakeBoldText(tv3Bold);
             mPaint3.setTextSize(mTv3Size);
             mPaint3.setColor(mTv3Color);
@@ -104,20 +105,7 @@ public final class HtmlTextView extends AppCompatTextView {
         if (mMaxPaint == null) {
             mMaxPaint = getPaint();
         }
-        if (mTvString != null && mSplitString != null) {
-            if (mTvString.contains(mSplitString)) {
-                String[] split = mTvString.split(mSplitString);
-                if (split.length == 1) {
-                    mTv1String = split[0];
-                    mTv2String = mSplitString;
-                }
-                if (split.length == 2) {
-                    mTv1String = split[0];
-                    mTv2String = mSplitString;
-                    mTv3String = split[1];
-                }
-            }
-        }
+        initSplitString();
         initDrawable();
     }
 
@@ -131,6 +119,23 @@ public final class HtmlTextView extends AppCompatTextView {
         if (drawables[2] != null) {
             mDrawableRightWidth = (mDrawableRightWidth > 0) ? (mDrawableRightWidth) : (drawables[2].getIntrinsicWidth());
             mDrawableRightHeight = (mDrawableRightHeight > 0) ? (mDrawableRightHeight) : (drawables[2].getIntrinsicHeight());
+        }
+    }
+
+    private void initSplitString() {
+        if (!TextUtils.isEmpty(mTvString) && !TextUtils.isEmpty(mSplitString)) {
+            if (mTvString.contains(mSplitString)) {
+                String[] split = mTvString.split(mSplitString);
+                if (split.length == 1) {
+                    mLeftString = split[0];
+                    mCenterString = mSplitString;
+                }
+                if (split.length == 2) {
+                    mLeftString = split[0];
+                    mCenterString = mSplitString;
+                    mRightString = split[1];
+                }
+            }
         }
     }
 
@@ -161,14 +166,14 @@ public final class HtmlTextView extends AppCompatTextView {
                 width = getMeasuredWidth();
             } else {
                 float w1 = 0, w2 = 0, w3 = 0;
-                if (!TextUtils.isEmpty(mTv1String)) {
-                    w1 = mPaint1.measureText(mTv1String);
+                if (!TextUtils.isEmpty(mLeftString)) {
+                    w1 = mPaint1.measureText(mLeftString);
                 }
-                if (!TextUtils.isEmpty(mTv2String)) {
-                    w2 = mPaint2.measureText(mTv2String);
+                if (!TextUtils.isEmpty(mCenterString)) {
+                    w2 = mPaint2.measureText(mCenterString);
                 }
-                if (!TextUtils.isEmpty(mTv3String)) {
-                    w3 = mPaint3.measureText(mTv3String);
+                if (!TextUtils.isEmpty(mRightString)) {
+                    w3 = mPaint3.measureText(mRightString);
                 }
                 width = (int) (w1 + w2 + w3 + plr + mTv2MarginLeft + mTv2MarginRight
                         + mDrawableLeftWidth + mDrawableRightWidth);
@@ -199,43 +204,43 @@ public final class HtmlTextView extends AppCompatTextView {
     }
 
     private final void drawLeft(Canvas canvas) {
-        if (mTv1String != null) {
+        if (!TextUtils.isEmpty(mLeftString)) {
             float xStartPoint = getPaddingLeft() + mDrawableLeftWidth;
-            canvas.drawText(mTv1String, xStartPoint, countBaseLine(mPaint1) - tv1MarBtm, mPaint1);
-            mLeftWidth = xStartPoint + mPaint1.measureText(mTv1String);
+            canvas.drawText(mLeftString, xStartPoint, countBaseLine(mPaint1) - tv1MarBtm, mPaint1);
+            mLeftWidth = xStartPoint + mPaint1.measureText(mLeftString);
         }
     }
 
     private final void drawCenter(Canvas canvas) {
-        if (mTv2String != null) {
+        if (!TextUtils.isEmpty(mCenterString)) {
             float xStartPoint = mTv2MarginLeft + mLeftWidth;
             //位置均分
             if (mGravityMode != 0) {
                 int midx = (getWidth() - getPaddingLeft() - getPaddingRight()) / 2;
-                xStartPoint = midx - mPaint2.measureText(mTv2String) / 2;
+                xStartPoint = midx - mPaint2.measureText(mCenterString) / 2;
                 //均分时偏移
                 if (mTv2Offset != 0) {
                     xStartPoint = midx - mTv2Offset;
                 }
                 //均分没有right时
-                if (this.mTv3String == null) {
-                    xStartPoint = getWidth() - getPaddingRight() - mPaint2.measureText(mTv2String);
+                if (TextUtils.isEmpty(mRightString)) {
+                    xStartPoint = getWidth() - getPaddingRight() - mPaint2.measureText(mCenterString);
                 }
             }
-            canvas.drawText(mTv2String, xStartPoint, countBaseLine(mPaint2) - tv2MarBtm, mPaint2);
-            mCenterWidth = mTv2MarginLeft + mTv2MarginRight + mPaint2.measureText(mTv2String);
+            canvas.drawText(mCenterString, xStartPoint, countBaseLine(mPaint2) - tv2MarBtm, mPaint2);
+            mCenterWidth = mTv2MarginLeft + mTv2MarginRight + mPaint2.measureText(mCenterString);
         }
     }
 
     private final void drawRight(Canvas canvas) {
-        if (mTv3String != null) {
+        if (!TextUtils.isEmpty(mRightString)) {
             float xStartPoint = mLeftWidth + mCenterWidth;
             //位置均分
             if (mGravityMode != 0) {
-                xStartPoint = (float) (this.getWidth() - this.getPaddingRight()) - mPaint3.measureText(mTv3String) - mDrawableRightWidth;
+                xStartPoint = (float) (this.getWidth() - this.getPaddingRight()) - mPaint3.measureText(mRightString) - mDrawableRightWidth;
             }
-            canvas.drawText(mTv3String, xStartPoint, countBaseLine(mPaint3) - tv3MarBtm, mPaint3);
-            mRightWidth = mPaint3.measureText(mTv3String);
+            canvas.drawText(mRightString, xStartPoint, countBaseLine(mPaint3) - tv3MarBtm, mPaint3);
+            mRightWidth = mPaint3.measureText(mRightString);
         }
     }
 
@@ -276,30 +281,50 @@ public final class HtmlTextView extends AppCompatTextView {
         }
     }
 
-    public String getTv1String() {
-        return mTv1String;
+    public String getLeftString() {
+        return mLeftString;
     }
 
-    public void setTv1String(String mTv1String) {
-        this.mTv1String = mTv1String;
+    public void setLeftString(String mTv1String) {
+        this.mLeftString = mTv1String;
         invalidate();
     }
 
-    public String getTv2String() {
-        return mTv2String;
+    public String getCenterString() {
+        return mCenterString;
     }
 
-    public void setTv2String(String mTv2String) {
-        this.mTv2String = mTv2String;
+    public void setCentString(String mTv2String) {
+        this.mCenterString = mTv2String;
         invalidate();
     }
 
-    public String getTv3String() {
-        return mTv3String;
+    public String getRightString() {
+        return mRightString;
     }
 
-    public void setTv3String(String mTv3String) {
-        this.mTv3String = mTv3String;
+    public void setRightString(String mTv3String) {
+        this.mRightString = mTv3String;
+        invalidate();
+    }
+
+    public String getTvString() {
+        return mTvString;
+    }
+
+    public void setTvString(String mTvString) {
+        this.mTvString = mTvString;
+        initSplitString();
+        invalidate();
+    }
+
+    public String getSplitString() {
+        return mSplitString;
+    }
+
+    public void setSplitString(String mSplitString) {
+        this.mSplitString = mSplitString;
+        initSplitString();
         invalidate();
     }
 
