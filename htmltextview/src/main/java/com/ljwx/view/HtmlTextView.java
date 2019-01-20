@@ -287,16 +287,16 @@ public final class HtmlTextView extends AppCompatTextView {
 
     public void setLeftString(String mTv1String) {
         this.mLeftString = mTv1String;
-        invalidate();
+        requestLayout();
     }
 
     public String getCenterString() {
         return mCenterString;
     }
 
-    public void setCentString(String mTv2String) {
+    public void setCenterString(String mTv2String) {
         this.mCenterString = mTv2String;
-        invalidate();
+        requestLayout();
     }
 
     public String getRightString() {
@@ -305,7 +305,7 @@ public final class HtmlTextView extends AppCompatTextView {
 
     public void setRightString(String mTv3String) {
         this.mRightString = mTv3String;
-        invalidate();
+        requestLayout();
     }
 
     public String getTvString() {
@@ -315,7 +315,7 @@ public final class HtmlTextView extends AppCompatTextView {
     public void setTvString(String mTvString) {
         this.mTvString = mTvString;
         initSplitString();
-        invalidate();
+        requestLayout();
     }
 
     public String getSplitString() {
@@ -325,7 +325,7 @@ public final class HtmlTextView extends AppCompatTextView {
     public void setSplitString(String mSplitString) {
         this.mSplitString = mSplitString;
         initSplitString();
-        invalidate();
+        requestLayout();
     }
 
     public float getTv1Size() {
