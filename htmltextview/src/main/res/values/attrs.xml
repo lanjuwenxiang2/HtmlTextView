@@ -39,4 +39,16 @@
         <attr name="htvDrawRightWidth" format="dimension" />
         <attr name="htvDrawRightHeight" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="ClickAreaImageView">
+        <attr name="tag1_left" format="dimension" />
+        <attr name="tag1_top" format="dimension" />
+        <attr name="tag1_right" format="dimension" />
+        <attr name="tag1_bottom" format="dimension" />
+        <attr name="tag2_left" format="dimension" />
+        <attr name="tag2_top" format="dimension" />
+        <attr name="tag2_right" format="dimension" />
+        <attr name="tag2_bottom" format="dimension" />
+        <attr name="drawArea" format="boolean"/>
+    </declare-styleable>
 </resources>

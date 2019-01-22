@@ -23,6 +23,16 @@
             android:gravity="center_vertical"
             android:orientation="vertical">
 
+            <com.ljwx.view.ClickAreaImageView
+                android:id="@+id/img"
+                app:tag1_left="20dp"
+                app:tag1_top="20dp"
+                app:tag1_right="100dp"
+                app:tag1_bottom="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/game_stone2"/>
+
             <com.ljwx.view.HtmlTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -69,7 +79,7 @@
 
             <com.ljwx.view.HtmlTextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:layout_marginTop="10dp"
                 app:htvCenterBold="true"
                 app:htvCenterColor="#00ff00"
@@ -88,7 +98,7 @@
 
             <com.ljwx.view.HtmlTextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="300dp"
                 android:layout_marginTop="10dp"
                 app:htvCenterBold="true"
                 app:htvCenterColor="#00ff00"
@@ -108,7 +118,7 @@
 
             <com.ljwx.view.HtmlTextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="400dp"
                 android:layout_marginTop="10dp"
                 app:htvBaseLineType="middle"
                 app:htvCenterBold="true"
@@ -126,7 +136,7 @@
 
             <com.ljwx.view.HtmlTextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 app:htvCenterColor="@color/colorAccent"
                 app:htvCenterSize="18dp"
                 app:htvCenterString="中文"
@@ -140,6 +150,7 @@
                 android:layout_height="wrap_content"
                 app:htvLeftString="abc"
                 app:htvRightString="中文" />
+
         </LinearLayout>
     </ScrollView>
 </layout>
