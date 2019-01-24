@@ -33,7 +33,6 @@ allprojects {
         }
     }
 }
-//tasks.getByPath(":htmltextview:mavenAndroidJavadocs").enabled = false
 task clean(type: Delete) {
     delete rootProject.buildDir
 }

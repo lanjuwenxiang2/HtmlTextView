@@ -34,6 +34,7 @@
                 android:src="@mipmap/game_stone2"/>
 
             <com.ljwx.view.HtmlTextView
+                android:fontFamily="@font/din_medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -44,7 +45,7 @@
                 app:htvLeftBold="false"
                 app:htvLeftColor="#ff0000"
                 app:htvLeftSize="12dp"
-                app:htvLeftString="abcAAAAAAAAA"
+                app:htvLeftString="123456789"
                 app:htvRightBold="false"
                 app:htvRightColor="#0000ff"
                 app:htvRightSize="19dp"

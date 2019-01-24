@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.AppCompatTextView;
 import android.text.TextUtils;
@@ -89,17 +90,20 @@ public final class HtmlTextView extends AppCompatTextView {
             mPaint1.setTextSize(mTv1Size);
             mPaint1.setColor(mTv1Color);
             mMaxPaint = mPaint1;
+            mPaint1.setTypeface(getTypeface());
         }
         {
             mPaint2.setFakeBoldText(tv2Bold);
             mPaint2.setTextSize(mTv2Size);
             mPaint2.setColor(mTv2Color);
+            mPaint2.setTypeface(getTypeface());
             mMaxPaint = mPaint2.getTextSize() >= mPaint1.getTextSize() ? mPaint2 : mPaint1;
         }
         {
             mPaint3.setFakeBoldText(tv3Bold);
             mPaint3.setTextSize(mTv3Size);
             mPaint3.setColor(mTv3Color);
+            mPaint3.setTypeface(getTypeface());
             mMaxPaint = mPaint3.getTextSize() >= mMaxPaint.getTextSize() ? mPaint3 : mMaxPaint;
         }
         if (mMaxPaint == null) {
