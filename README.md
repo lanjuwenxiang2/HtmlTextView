@@ -1,6 +1,7 @@
 # HtmlTextView
+[![](https://www.jitpack.io/v/ljwx/HtmlTextView.svg)](https://www.jitpack.io/#ljwx/HtmlTextView)
 #### 初衷
-> 因为项目中经常出现这种情况, 完整的一句话, 中间一些特殊需要注意的地方常常大小和颜色都不一样, 虽然用HTML类可以处理这类问题, 但是处理起来可能没有这个方便, 并且无法预览, 由于大小不一样, 加上如果是中英文数字混合显示, 可能底部看起来不在一条线, UI审核不容易通过, 因此制作这个控件, 希望能解决一些问题, 这是我的第一个开源项目, 我会用到我稍后的项目中, 可能会有很多问题, 欢迎提出来, 我会努力修复.
+> 因为项目中经常出现这种情况, 完整的一句话, 中间一些特殊需要注意的地方常常大小和颜色都不一样, 虽然用HTML类可以处理这类问题, 但是处理起来可能没有这个方便, 并且无法预览, 由于大小不一样, 加上如果是中英文数字混合显示, 可能底部看起来不在一条线, UI审核不容易通过, 因此制作这个控件, 希望能解决一些问题, 现已支持自定义字体,左右两边设置图片,并自定义大小.
 
 ![avatar](https://github.com/ljwx/Image/blob/master/htmltextview.png)
 #### 属性介绍
@@ -45,6 +46,6 @@ allprojects {
   在需要引用的module的build里添加
   ```java
  dependencies {
-	implementation 'com.github.ljwx:HtmlTextView:1.5.0'
+	implementation 'com.github.ljwx:HtmlTextView:1.5.1'
 }
   ```
