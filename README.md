@@ -27,12 +27,14 @@
 ```
 |   特殊属性  | 介绍 |
 | --------:| :--: |
+|htvLeftBold	|是否需要加粗|
 | htvTv2MarginL  | 中间文字左边间距 |
 | htvTv2MarginR  | 中间文字右边间距 |
-| htvGravityMode | 三段文字紧挨或者平分 |
-| htvTv2Offset   | 三段文字平分时,中间文字起始位置距中点的偏移值 |
-| htvBaseLineMode| 基准线是底部还是高度的中点 |
+| htvGravityType | 三段文字紧挨或者均分在控件宽度的左中右 |
+| htvTv2Offset   | 三段文字平分时,中间文字起始位置,距中点的偏移值 |
+| htvBaseLineType| 基准线是控件底部,还是控件高度的中间位置 |
 | htvTv1MarginBottom| 当底部无法对齐时,这个值可以设置底部偏移 |
+|htvDrawLeftWidth|设置drawable图片的宽高|
 ### 引用方式
 在根目录的build里添加
 ```java
