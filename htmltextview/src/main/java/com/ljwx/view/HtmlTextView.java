@@ -4,11 +4,12 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.AppCompatTextView;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.ViewGroup;
 
 import com.ljwx.htmltextview.R;
 
@@ -18,14 +19,19 @@ public final class HtmlTextView extends AppCompatTextView {
     private int mNorColor;
     private float mNorSize;
 
+    //切割是的字符串
     private String mTvString, mSplitString;
+    //常规参数
     private String mLeftString = "", mCenterString = "", mRightString = "";
     private int mTv1Color = defualtColor, mTv2Color = defualtColor, mTv3Color = defualtColor;
     private float mTv1Size, mTv2Size, mTv3Size;
+    //距底部的距离,可以为负
     private float tv1MarBtm, tv2MarBtm, tv3MarBtm;
     private boolean tv1Bold, tv2Bold, tv3Bold;
+    //中间字符的左右间距
     private float mTv2MarginLeft, mTv2MarginRight;
     private int mGravityMode;
+    //中间字符偏移值
     private float mTv2Offset;
     private int mLineMode;
     private Paint mPaint1 = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -36,6 +42,9 @@ public final class HtmlTextView extends AppCompatTextView {
     private float mDrawableLeftWidth, mDrawableRightWidth, mDrawableLeftHeight, mDrawableRightHeight;
     private Drawable[] drawables;
     private float mLeftWidth, mCenterWidth, mRightWidth;
+    private int mParentWidth, mViewWidth, mContentWidth;
+    private boolean mAutoSize = false;
+    private float mAutoSizeRatio = 0.01f;
 
     public HtmlTextView(Context context) {
         super(context, null);
@@ -76,6 +85,9 @@ public final class HtmlTextView extends AppCompatTextView {
         mDrawableRightWidth = attr.getDimension(R.styleable.HtmlTextView_htvDrawRightWidth, 0f);
         mDrawableRightHeight = attr.getDimension(R.styleable.HtmlTextView_htvDrawRightHeight, 0f);
 
+        mAutoSize = attr.getBoolean(R.styleable.HtmlTextView_htvAutoSize, false);
+        mAutoSizeRatio = attr.getDimension(R.styleable.HtmlTextView_htvAutoSizeRatio, 0.01f);
+
         attr.recycle();
         init();
     }
@@ -89,7 +101,6 @@ public final class HtmlTextView extends AppCompatTextView {
             mPaint1.setFakeBoldText(tv1Bold);
             mPaint1.setTextSize(mTv1Size);
             mPaint1.setColor(mTv1Color);
-            mMaxPaint = mPaint1;
             mPaint1.setTypeface(getTypeface());
         }
         {
@@ -97,18 +108,14 @@ public final class HtmlTextView extends AppCompatTextView {
             mPaint2.setTextSize(mTv2Size);
             mPaint2.setColor(mTv2Color);
             mPaint2.setTypeface(getTypeface());
-            mMaxPaint = mPaint2.getTextSize() >= mPaint1.getTextSize() ? mPaint2 : mPaint1;
         }
         {
             mPaint3.setFakeBoldText(tv3Bold);
             mPaint3.setTextSize(mTv3Size);
             mPaint3.setColor(mTv3Color);
             mPaint3.setTypeface(getTypeface());
-            mMaxPaint = mPaint3.getTextSize() >= mMaxPaint.getTextSize() ? mPaint3 : mMaxPaint;
         }
-        if (mMaxPaint == null) {
-            mMaxPaint = getPaint();
-        }
+        initMaxPaint();
         initSplitString();
         initDrawable();
     }
@@ -126,10 +133,14 @@ public final class HtmlTextView extends AppCompatTextView {
         }
     }
 
+    /***
+     * 切割时设置
+     */
     private void initSplitString() {
         if (!TextUtils.isEmpty(mTvString) && !TextUtils.isEmpty(mSplitString)) {
             if (mTvString.contains(mSplitString)) {
                 String[] split = mTvString.split(mSplitString);
+                //可能是末尾
                 if (split.length == 1) {
                     mLeftString = split[0];
                     mCenterString = mSplitString;
@@ -142,6 +153,19 @@ public final class HtmlTextView extends AppCompatTextView {
             }
         }
     }
+
+    /**
+     * 算出最大字体的高度
+     */
+    private void initMaxPaint() {
+        mMaxPaint = mPaint1;
+        mMaxPaint = mPaint2.getTextSize() >= mPaint1.getTextSize() ? mPaint2 : mPaint1;
+        mMaxPaint = mPaint3.getTextSize() >= mMaxPaint.getTextSize() ? mPaint3 : mMaxPaint;
+        if (mMaxPaint == null) {
+            mMaxPaint = getPaint();
+        }
+    }
+
 
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -164,31 +188,55 @@ public final class HtmlTextView extends AppCompatTextView {
         }
 
         if (MeasureSpec.AT_MOST == widthMode) {
-            float plr = (float) (getPaddingLeft() + getPaddingRight() + 0.5);
             if (!TextUtils.isEmpty(txt)) {
 //                width = (int) (getPaint().measureText(getText().toString()) + plr);
                 width = getMeasuredWidth();
             } else {
-                float w1 = 0, w2 = 0, w3 = 0;
-                if (!TextUtils.isEmpty(mLeftString)) {
-                    w1 = mPaint1.measureText(mLeftString);
-                }
-                if (!TextUtils.isEmpty(mCenterString)) {
-                    w2 = mPaint2.measureText(mCenterString);
-                }
-                if (!TextUtils.isEmpty(mRightString)) {
-                    w3 = mPaint3.measureText(mRightString);
-                }
-                width = (int) (w1 + w2 + w3 + plr + mTv2MarginLeft + mTv2MarginRight
-                        + mDrawableLeftWidth + mDrawableRightWidth);
+                width = contentWidth();
             }
         }
+        height = (int) Math.max(height, Math.max(mDrawableLeftHeight, mDrawableRightHeight));
         setMeasuredDimension(width, height);
+        contentWidth();
+    }
+
+    /**
+     * 内容本身需要的宽度
+     */
+    private int contentWidth() {
+        float plr = (float) (getPaddingLeft() + getPaddingRight() + 0.5);
+        float w1 = 0, w2 = 0, w3 = 0;
+        if (!TextUtils.isEmpty(mLeftString)) {
+            w1 = mPaint1.measureText(mLeftString);
+        }
+        if (!TextUtils.isEmpty(mCenterString)) {
+            w2 = mPaint2.measureText(mCenterString);
+        }
+        if (!TextUtils.isEmpty(mRightString)) {
+            w3 = mPaint3.measureText(mRightString);
+        }
+        mContentWidth = (int) (w1 + w2 + w3 + plr
+                + mTv2MarginLeft + mTv2MarginRight
+                + mDrawableLeftWidth + mDrawableRightWidth);
+        return mContentWidth;
     }
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
+        viewWidth();
+    }
+
+    /**
+     * 父控件的宽度,自己的宽度
+     */
+    private void viewWidth() {
+        mParentWidth = 0;
+        ViewGroup parent = (ViewGroup) getParent();
+        if (parent != null) {
+            mParentWidth = parent.getWidth();
+        }
+        mViewWidth = Math.max(getWidth(), getMeasuredWidth());
     }
 
     protected void onDraw(Canvas canvas) {
@@ -197,8 +245,12 @@ public final class HtmlTextView extends AppCompatTextView {
         setDrawable(canvas);
     }
 
+    /**
+     * 绘制工作
+     */
     private void drawTv(Canvas canvas) {
         if (TextUtils.isEmpty(getText())) {
+            autoSize();
             mMaxBaseLine = (getHeight() / 2) + (Math.abs(mMaxPaint.ascent() + mMaxPaint.descent()) / 2);
             this.drawLeft(canvas);
             this.drawCenter(canvas);
@@ -207,6 +259,34 @@ public final class HtmlTextView extends AppCompatTextView {
 
     }
 
+    /**
+     * 自动适配字体大小
+     */
+    private void autoSize() {
+        if (mAutoSize) {
+            //缩放率
+            float s1 = mPaint1.getTextSize() * mAutoSizeRatio;
+            float s2 = mPaint2.getTextSize() * mAutoSizeRatio;
+            float s3 = mPaint3.getTextSize() * mAutoSizeRatio;
+            //不用while,防止未知死循环
+            for (int i = 0; i < 50; i++) {
+                if (mContentWidth > mParentWidth || mContentWidth > mViewWidth) {
+                    mPaint1.setTextSize(mPaint1.getTextSize() - s1);
+                    mPaint2.setTextSize(mPaint2.getTextSize() - s2);
+                    mPaint3.setTextSize(mPaint3.getTextSize() - s3);
+                } else {
+                    break;
+                }
+                //重新计算
+                contentWidth();
+            }
+            requestLayout();
+        }
+    }
+
+    /**
+     * 左边文字
+     */
     private final void drawLeft(Canvas canvas) {
         if (!TextUtils.isEmpty(mLeftString)) {
             float xStartPoint = getPaddingLeft() + mDrawableLeftWidth;
@@ -248,11 +328,17 @@ public final class HtmlTextView extends AppCompatTextView {
         }
     }
 
+    /**
+     * 中间基线对齐方式
+     */
     private final float countBaseLine(Paint paint) {
         float tvLine = (getHeight() / 2) + Math.abs(paint.ascent() + paint.descent()) / 2;
         return mLineMode == 0 ? mMaxBaseLine : tvLine;
     }
 
+    /**
+     * drawable图片宽高
+     */
     private void setDrawable(Canvas canvas) {
         if (drawables[0] != null) {
             Drawable left = drawables[0];

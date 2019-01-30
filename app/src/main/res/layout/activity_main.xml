@@ -25,132 +25,138 @@
 
             <com.ljwx.view.ClickAreaImageView
                 android:id="@+id/img"
-                app:tag1_left="20dp"
-                app:tag1_top="20dp"
-                app:tag1_right="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/game_stone2"
+                android:visibility="gone"
                 app:tag1_bottom="100dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/game_stone2"/>
+                app:tag1_left="20dp"
+                app:tag1_right="100dp"
+                app:tag1_top="20dp" />
+
+            <!--<com.ljwx.view.HtmlTextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:fontFamily="@font/din_medium"-->
+            <!--app:htvCenterBold="true"-->
+            <!--app:htvCenterColor="#00ff00"-->
+            <!--app:htvCenterSize="14dp"-->
+            <!--app:htvCenterString="中文"-->
+            <!--app:htvGravityType="average"-->
+            <!--app:htvLeftBold="false"-->
+            <!--app:htvLeftColor="#ff0000"-->
+            <!--app:htvLeftSize="12dp"-->
+            <!--app:htvLeftString="123456789"-->
+            <!--app:htvRightBold="false"-->
+            <!--app:htvRightColor="#0000ff"-->
+            <!--app:htvRightSize="19dp"-->
+            <!--app:htvRightString="123(常规显示)" />-->
+
+            <!--<com.ljwx.view.HtmlTextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:drawableLeft="@mipmap/game_stone2"-->
+            <!--android:drawableRight="@mipmap/game_stone2"-->
+            <!--app:htvCenterBold="false"-->
+            <!--app:htvCenterColor="#00ff00"-->
+            <!--app:htvCenterMarginLeft="0dp"-->
+            <!--app:htvCenterMarginRight="00dp"-->
+            <!--app:htvCenterSize="14dp"-->
+            <!--app:htvCenterString="中文"-->
+            <!--app:htvDrawLeftHeight="30dp"-->
+            <!--app:htvDrawLeftWidth="40dp"-->
+            <!--app:htvDrawRightHeight="40dp"-->
+            <!--app:htvDrawRightWidth="50dp"-->
+            <!--app:htvGravityType="single"-->
+            <!--app:htvLeftBold="false"-->
+            <!--app:htvLeftColor="#ff0000"-->
+            <!--app:htvLeftSize="12dp"-->
+            <!--app:htvLeftString="abc"-->
+            <!--app:htvRightBold="false"-->
+            <!--app:htvRightColor="#0000ff"-->
+            <!--app:htvRightSize="19dp"-->
+            <!--app:htvRightString="123(设置中间文字左右间距)" />-->
+
+            <!--<com.ljwx.view.HtmlTextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--app:htvCenterBold="true"-->
+            <!--app:htvCenterColor="#00ff00"-->
+            <!--app:htvCenterMarginBottom="0.5dp"-->
+            <!--app:htvCenterSize="20dp"-->
+            <!--app:htvCenterString="中文"-->
+            <!--app:htvGravityType="average"-->
+            <!--app:htvLeftBold="false"-->
+            <!--app:htvLeftColor="#ff0000"-->
+            <!--app:htvLeftSize="12dp"-->
+            <!--app:htvLeftString="abc"-->
+            <!--app:htvRightBold="false"-->
+            <!--app:htvRightColor="#0000ff"-->
+            <!--app:htvRightSize="19dp"-->
+            <!--app:htvRightString="123(分散)" />-->
+
+            <!--<com.ljwx.view.HtmlTextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--app:htvCenterBold="true"-->
+            <!--app:htvCenterColor="#00ff00"-->
+            <!--app:htvCenterMarginBottom="0.5dp"-->
+            <!--app:htvCenterOffset="50dp"-->
+            <!--app:htvCenterSize="20dp"-->
+            <!--app:htvCenterString="中文"-->
+            <!--app:htvGravityType="average"-->
+            <!--app:htvLeftBold="false"-->
+            <!--app:htvLeftColor="#ff0000"-->
+            <!--app:htvLeftSize="12dp"-->
+            <!--app:htvLeftString="abc"-->
+            <!--app:htvRightBold="false"-->
+            <!--app:htvRightColor="#0000ff"-->
+            <!--app:htvRightSize="19dp"-->
+            <!--app:htvRightString="123(偏移)" />-->
 
             <com.ljwx.view.HtmlTextView
-                android:fontFamily="@font/din_medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:htvCenterBold="true"
-                app:htvCenterColor="#00ff00"
-                app:htvCenterSize="14dp"
-                app:htvCenterString="中文"
-                app:htvLeftBold="false"
-                app:htvLeftColor="#ff0000"
-                app:htvLeftSize="12dp"
-                app:htvLeftString="123456789"
-                app:htvRightBold="false"
-                app:htvRightColor="#0000ff"
-                app:htvRightSize="19dp"
-                app:htvGravityType="average"
-                app:htvRightString="123(常规显示)" />
-
-            <com.ljwx.view.HtmlTextView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:drawableLeft="@mipmap/game_stone2"
-                android:drawableRight="@mipmap/game_stone2"
-                app:htvCenterBold="false"
-                app:htvCenterColor="#00ff00"
-                app:htvCenterMarginLeft="0dp"
-                app:htvCenterMarginRight="00dp"
-                app:htvCenterSize="14dp"
-                app:htvCenterString="中文"
-                app:htvDrawLeftHeight="30dp"
-                app:htvDrawLeftWidth="40dp"
-                app:htvDrawRightHeight="30dp"
-                app:htvDrawRightWidth="40dp"
-                app:htvLeftBold="false"
-                app:htvGravityType="single"
-                app:htvLeftColor="#ff0000"
-                app:htvLeftSize="12dp"
-                app:htvLeftString="abc"
-                app:htvRightBold="false"
-                app:htvRightColor="#0000ff"
-                app:htvRightSize="19dp"
-                app:htvRightString="123(设置中间文字左右间距)" />
-
-            <com.ljwx.view.HtmlTextView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="10dp"
-                app:htvCenterBold="true"
-                app:htvCenterColor="#00ff00"
-                app:htvCenterMarginBottom="0.5dp"
-                app:htvCenterSize="20dp"
-                app:htvCenterString="中文"
-                app:htvGravityType="average"
-                app:htvLeftBold="false"
-                app:htvLeftColor="#ff0000"
-                app:htvLeftSize="12dp"
-                app:htvLeftString="abc"
-                app:htvRightBold="false"
-                app:htvRightColor="#0000ff"
-                app:htvRightSize="19dp"
-                app:htvRightString="123(分散)" />
-
-            <com.ljwx.view.HtmlTextView
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_marginTop="10dp"
-                app:htvCenterBold="true"
-                app:htvCenterColor="#00ff00"
-                app:htvCenterMarginBottom="0.5dp"
-                app:htvCenterOffset="50dp"
-                app:htvCenterSize="20dp"
-                app:htvCenterString="中文"
-                app:htvGravityType="average"
-                app:htvLeftBold="false"
-                app:htvLeftColor="#ff0000"
-                app:htvLeftSize="12dp"
-                app:htvLeftString="abc"
-                app:htvRightBold="false"
-                app:htvRightColor="#0000ff"
-                app:htvRightSize="19dp"
-                app:htvRightString="123(偏移)" />
-
-            <com.ljwx.view.HtmlTextView
-                android:layout_width="wrap_content"
-                android:layout_height="400dp"
-                android:layout_marginTop="10dp"
+                app:htvAutoSize="true"
                 app:htvBaseLineType="middle"
                 app:htvCenterBold="true"
                 app:htvCenterColor="#00ff00"
                 app:htvCenterSize="18dp"
                 app:htvCenterString="中文"
+                app:htvDrawLeftHeight="20dp"
+                app:htvDrawLeftWidth="20dp"
                 app:htvLeftBold="false"
                 app:htvLeftColor="#ff0000"
                 app:htvLeftSize="12dp"
                 app:htvLeftString="abc"
                 app:htvRightBold="false"
                 app:htvRightColor="#0000ff"
-                app:htvRightSize="25dp"
-                app:htvRightString="123(控件中间线对齐)" />
+                app:htvRightSize="35dp"
+                app:htvRightString="123(控件中间线对齐)加入天长会" />
 
-            <com.ljwx.view.HtmlTextView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                app:htvCenterColor="@color/colorAccent"
-                app:htvCenterSize="18dp"
-                app:htvCenterString="中文"
-                app:htvLeftString="abc"
-                app:htvRightString="123"
-                app:htvTvNorColor="@color/colorPrimary"
-                app:htvTvNorSize="14dp" />
+            <!--<com.ljwx.view.HtmlTextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:htvCenterColor="@color/colorAccent"-->
+            <!--app:htvCenterSize="18dp"-->
+            <!--app:htvCenterString="中文"-->
+            <!--app:htvLeftString="abc"-->
+            <!--app:htvRightString="123"-->
+            <!--app:htvTvNorColor="@color/colorPrimary"-->
+            <!--app:htvTvNorSize="14dp" />-->
 
-            <com.ljwx.view.HtmlTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:htvLeftString="abc"
-                app:htvRightString="中文" />
+            <!--<com.ljwx.view.HtmlTextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:htvLeftString="abc"-->
+            <!--app:htvRightString="中文" />-->
 
         </LinearLayout>
     </ScrollView>
