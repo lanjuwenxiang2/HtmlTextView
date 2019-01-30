@@ -35,6 +35,8 @@
 | htvBaseLineType| 基准线是控件底部,还是控件高度的中间位置 |
 | htvTv1MarginBottom| 当底部无法对齐时,这个值可以设置底部偏移 |
 |htvDrawLeftWidth|设置drawable图片的宽高|
+|htvAutoSize|是否自适应字体大小,默认false|
+|htvAutoSizeRatio|缩小比率,默认0.01|
 ### 引用方式
 在根目录的build里添加
 ```java
@@ -48,6 +50,6 @@ allprojects {
   在需要引用的module的build里添加
   ```java
  dependencies {
-	implementation 'com.github.ljwx:HtmlTextView:1.5.1'
+	implementation 'com.github.ljwx:HtmlTextView:1.5.2'
 }
   ```
