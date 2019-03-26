@@ -52,6 +52,6 @@ allprojects {
   在需要引用的module的build里添加
   ```java
  dependencies {
-	implementation 'com.github.ljwx:HtmlTextView:1.5.2'
+	implementation 'com.github.ljwx:HtmlTextView:Tag' //tag替换为JitPack标签后面的数字即可
 }
   ```
