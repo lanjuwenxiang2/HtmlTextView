@@ -8,12 +8,12 @@ import android.graphics.drawable.Drawable;
 import android.support.v7.widget.AppCompatTextView;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.ljwx.htmltextview.R;
 
-public final class HtmlTextView extends AppCompatTextView {
+public final class HtmlTextView extends TextView {
     private int defualtColor = getCurrentTextColor();
     private float defualtSize = getTextSize();
     private int mNorColor;
@@ -40,6 +40,7 @@ public final class HtmlTextView extends AppCompatTextView {
     private Paint mMaxPaint;
     private Float mMaxBaseLine;
     private float mDrawableLeftWidth, mDrawableRightWidth, mDrawableLeftHeight, mDrawableRightHeight;
+    private float mDrawableLeftPadding, mDrawableRightPadding;
     private Drawable[] drawables;
     private float mLeftWidth, mCenterWidth, mRightWidth;
     private int mParentWidth, mViewWidth, mContentWidth;
@@ -76,14 +77,16 @@ public final class HtmlTextView extends AppCompatTextView {
         mTv2MarginLeft = attr.getDimension(R.styleable.HtmlTextView_htvCenterMarginLeft, 0f);
         mTv2MarginRight = attr.getDimension(R.styleable.HtmlTextView_htvCenterMarginRight, 0f);
 
-        mGravityMode = attr.getInt(R.styleable.HtmlTextView_htvGravityType, 0);
+        mGravityMode = attr.getInt(R.styleable.HtmlTextView_htvGravityMode, 0);
         mTv2Offset = attr.getDimension(R.styleable.HtmlTextView_htvCenterOffset, 0f);
-        mLineMode = attr.getInt(R.styleable.HtmlTextView_htvBaseLineType, 0);
+        mLineMode = attr.getInt(R.styleable.HtmlTextView_htvBaseLineMode, 0);
 
         mDrawableLeftWidth = attr.getDimension(R.styleable.HtmlTextView_htvDrawLeftWidth, 0f);
         mDrawableLeftHeight = attr.getDimension(R.styleable.HtmlTextView_htvDrawLeftHeight, 0f);
+        mDrawableLeftPadding = attr.getDimension(R.styleable.HtmlTextView_htvDrawLeftPadding, 0f);
         mDrawableRightWidth = attr.getDimension(R.styleable.HtmlTextView_htvDrawRightWidth, 0f);
         mDrawableRightHeight = attr.getDimension(R.styleable.HtmlTextView_htvDrawRightHeight, 0f);
+        mDrawableRightPadding = attr.getDimension(R.styleable.HtmlTextView_htvDrawRightPadding, 0f);
 
         mAutoSize = attr.getBoolean(R.styleable.HtmlTextView_htvAutoSize, false);
         mAutoSizeRatio = attr.getDimension(R.styleable.HtmlTextView_htvAutoSizeRatio, 0.01f);
@@ -289,7 +292,7 @@ public final class HtmlTextView extends AppCompatTextView {
      */
     private final void drawLeft(Canvas canvas) {
         if (!TextUtils.isEmpty(mLeftString)) {
-            float xStartPoint = getPaddingLeft() + mDrawableLeftWidth;
+            float xStartPoint = getPaddingLeft() + mDrawableLeftWidth + mDrawableLeftPadding;
             canvas.drawText(mLeftString, xStartPoint, countBaseLine(mPaint1) - tv1MarBtm, mPaint1);
             mLeftWidth = xStartPoint + mPaint1.measureText(mLeftString);
         }
@@ -308,7 +311,8 @@ public final class HtmlTextView extends AppCompatTextView {
                 }
                 //均分没有right时
                 if (TextUtils.isEmpty(mRightString)) {
-                    xStartPoint = getWidth() - getPaddingRight() - mPaint2.measureText(mCenterString);
+                    xStartPoint = getWidth() - getPaddingRight() - mPaint2.measureText(mCenterString)
+                            - mDrawableRightWidth - mDrawableRightPadding;
                 }
             }
             canvas.drawText(mCenterString, xStartPoint, countBaseLine(mPaint2) - tv2MarBtm, mPaint2);
@@ -321,7 +325,7 @@ public final class HtmlTextView extends AppCompatTextView {
             float xStartPoint = mLeftWidth + mCenterWidth;
             //位置均分
             if (mGravityMode != 0) {
-                xStartPoint = (float) (this.getWidth() - this.getPaddingRight()) - mPaint3.measureText(mRightString) - mDrawableRightWidth;
+                xStartPoint = (float) (this.getWidth() - this.getPaddingRight()) - mPaint3.measureText(mRightString) - mDrawableRightWidth - mDrawableRightPadding;
             }
             canvas.drawText(mRightString, xStartPoint, countBaseLine(mPaint3) - tv3MarBtm, mPaint3);
             mRightWidth = mPaint3.measureText(mRightString);
@@ -358,10 +362,10 @@ public final class HtmlTextView extends AppCompatTextView {
             //本身宽高
             int x = getPaddingLeft();
             int y = getHeight() / 2 - right.getIntrinsicHeight() / 2;
-            drawables[0].setBounds(x, y, right.getIntrinsicWidth() + x, right.getIntrinsicHeight() + y);
+            right.setBounds(x, y, right.getIntrinsicWidth() + x, right.getIntrinsicHeight() + y);
             //手动设置宽高
             if (mDrawableRightWidth > 0 && mDrawableRightHeight > 0) {
-                float mDrawRightXStartPoint = mLeftWidth + mCenterWidth + mRightWidth;
+                float mDrawRightXStartPoint = mLeftWidth + mCenterWidth + mRightWidth + mDrawableRightPadding;
                 //位置够,且紧挨模式时,紧挨绘制
                 int x2 = (int) ((getWidth() >= mDrawRightXStartPoint + mDrawableRightWidth && mGravityMode == 0) ? (mDrawRightXStartPoint) : (getWidth() - mDrawableRightWidth));
                 int y2 = (int) (getHeight() / 2 - mDrawableRightHeight / 2);

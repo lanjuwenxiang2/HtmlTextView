@@ -25,19 +25,21 @@
         <attr name="htvRightMarginBottom" format="dimension" />
         <attr name="htvCenterMarginLeft" format="dimension" />
         <attr name="htvCenterMarginRight" format="dimension" />
-        <attr name="htvGravityType" format="enum">
-            <enum name="single" value="0" />
+        <attr name="htvGravityMode" format="enum">
+            <enum name="continuation" value="0" />
             <enum name="average" value="1" />
         </attr>
         <attr name="htvCenterOffset" format="dimension" />
-        <attr name="htvBaseLineType" format="enum">
+        <attr name="htvBaseLineMode" format="enum">
             <enum name="bottom" value="0" />
             <enum name="middle" value="1" />
         </attr>
         <attr name="htvDrawLeftWidth" format="dimension" />
         <attr name="htvDrawLeftHeight" format="dimension" />
+        <attr name="htvDrawLeftPadding" format="dimension"/>
         <attr name="htvDrawRightWidth" format="dimension" />
         <attr name="htvDrawRightHeight" format="dimension" />
+        <attr name="htvDrawRightPadding" format="dimension"/>
         <attr name="htvAutoSize" format="boolean" />
         <attr name="htvAutoSizeRatio" format="float" />
     </declare-styleable>

@@ -123,15 +123,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:drawableLeft="@mipmap/game_stone2"
                 app:htvAutoSize="true"
-                app:htvBaseLineType="middle"
                 app:htvCenterBold="true"
                 app:htvCenterColor="#00ff00"
                 app:htvCenterSize="18dp"
                 app:htvCenterString="中文"
-                app:htvDrawLeftHeight="20dp"
-                app:htvDrawLeftWidth="20dp"
                 app:htvLeftBold="false"
                 app:htvLeftColor="#ff0000"
                 app:htvLeftSize="12dp"
@@ -139,7 +135,11 @@
                 app:htvRightBold="false"
                 app:htvRightColor="#0000ff"
                 app:htvRightSize="35dp"
-                app:htvRightString="123(控件中间线对齐)加入天长会" />
+                app:htvDrawRightHeight="20dp"
+                app:htvDrawRightWidth="20dp"
+                app:htvGravityMode="average"
+                android:drawableRight="@mipmap/game_stone2"
+                />
 
             <!--<com.ljwx.view.HtmlTextView-->
             <!--android:layout_width="match_parent"-->
