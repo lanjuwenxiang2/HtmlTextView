@@ -40,7 +40,8 @@
 |htvAutoSize|是否自适应字体大小,默认false|
 |htvAutoSizeRatio|缩小比率,默认0.01|  
 
- 设置drawable资源图片方式还是原来一样android:drawableLeft="", 只是在检测到设置了htvDrawbaleleft或者htvDrawableRight宽高属性时,会修改drawable本来的大小, drawableTop和Bottom使用频率比较低, 我就没有处理
+> 设置drawable资源图片方式还是原来一样android:drawableLeft="", 只是在检测到设置了htvDrawbaleleft或者htvDrawableRight宽高属性时,会修改drawable本来的大小, drawableTop和Bottom使用频率比较低, 我就没有处理
+> 在IDE的布局文件里, 可以通过app:htv查看提示所有属性, 有些属性我没有全部提及, 不过通过属性名及尝试, 可以大概知道意思
 ### 引用方式
 在根目录的build里添加
 ```java
