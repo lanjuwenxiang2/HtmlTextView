@@ -38,7 +38,9 @@
 | htvTv1MarginBottom| 当底部无法对齐时,这个值可以设置底部偏移 |
 |htvDrawLeftWidth|设置drawable图片的宽高|
 |htvAutoSize|是否自适应字体大小,默认false|
-|htvAutoSizeRatio|缩小比率,默认0.01|
+|htvAutoSizeRatio|缩小比率,默认0.01|  
+
+ 设置drawable资源图片方式还是原来一样android:drawableLeft="", 只是在检测到设置了htvDrawbaleleft或者htvDrawableRight宽高属性时,会修改drawable本来的大小, drawableTop和Bottom使用频率比较低, 我就没有处理
 ### 引用方式
 在根目录的build里添加
 ```java
