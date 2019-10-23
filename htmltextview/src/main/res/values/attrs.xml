@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="HtmlTextView">
-        <attr name="htvTvString" format="string" />
         <attr name="htvTvNorSize" format="dimension" />
         <attr name="htvTvNorColor" format="color" />
-        <attr name="htvTvSplitString" format="string" />
         <attr name="htvSpliSize" format="dimension" />
         <attr name="htvSpliColor" format="color" />
 
@@ -29,7 +27,6 @@
             <enum name="continuation" value="0" />
             <enum name="average" value="1" />
         </attr>
-        <attr name="htvCenterOffset" format="dimension" />
         <attr name="htvBaseLineMode" format="enum">
             <enum name="bottom" value="0" />
             <enum name="middle" value="1" />

@@ -133,12 +133,15 @@
                 app:htvLeftSize="12dp"
                 app:htvLeftString="abc"
                 app:htvRightBold="false"
+                app:htvDrawRightPadding="20dp"
                 app:htvRightColor="#0000ff"
                 app:htvRightSize="35dp"
+                app:htvRightString="abc"
                 app:htvDrawRightHeight="20dp"
                 app:htvDrawRightWidth="20dp"
                 app:htvGravityMode="average"
-                android:drawableRight="@mipmap/game_stone2"
+                android:paddingRight="20dp"
+                android:drawableRight="@mipmap/ic_launcher"
                 />
 
             <!--<com.ljwx.view.HtmlTextView-->
