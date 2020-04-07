@@ -195,11 +195,12 @@ public final class HtmlTextView extends TextView {
         //获取最大高度(文字高度,图片高度比较)
         height = (int) Math.max(height, Math.max(mDrawableLeftHeight, mDrawableRightHeight));
         setMeasuredDimension(width, height);
+        //计算内容宽度
         contentWidth();
     }
 
     /**
-     * 计算文本所需总宽度
+     * 计算内容所需总宽度
      */
     private int contentWidth() {
         //左右两边padding值
@@ -243,14 +244,14 @@ public final class HtmlTextView extends TextView {
 
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        drawTv(canvas);
-        setDrawable(canvas);
+        drawText(canvas);
+        drawDrawable(canvas);
     }
 
     /**
      * 绘制文字
      */
-    private void drawTv(Canvas canvas) {
+    private void drawText(Canvas canvas) {
         if (TextUtils.isEmpty(getText())) {
             autoSize();
             mMaxBaseLine = (getHeight() / 2) + (Math.abs(mMaxPaint.ascent() + mMaxPaint.descent()) / 2);
@@ -340,7 +341,7 @@ public final class HtmlTextView extends TextView {
     /**
      * drawable图片宽高
      */
-    private void setDrawable(Canvas canvas) {
+    private void drawDrawable(Canvas canvas) {
         if (drawables[0] != null) {
             Drawable left = drawables[0];
             int paddingLeft = getPaddingLeft();
