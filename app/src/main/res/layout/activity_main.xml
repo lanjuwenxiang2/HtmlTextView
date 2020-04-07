@@ -25,10 +25,10 @@
 
             <com.ljwx.view.ClickAreaImageView
                 android:id="@+id/img"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:src="@mipmap/game_stone2"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:tag1_bottom="100dp"
                 app:tag1_left="20dp"
                 app:tag1_right="100dp"
@@ -119,30 +119,36 @@
             <!--app:htvRightString="123(偏移)" />-->
 
             <com.ljwx.view.HtmlTextView
-                android:layout_width="match_parent"
+                android:id="@+id/test"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:drawableRight="@mipmap/ic_launcher"
+                android:paddingRight="20dp"
+                android:drawableLeft="@mipmap/ic_launcher"
+                app:htvDrawLeftHeight="20dp"
+                app:htvDrawLeftWidth="20dp"
+                app:htvDrawLeftPadding="0dp"
                 app:htvAutoSize="true"
-                app:htvCenterBold="true"
+                app:htvCenterMarginRight="10dp"
+                app:htvCenterMarginLeft="10dp"
+                app:htvCenterBold="false"
                 app:htvCenterColor="#00ff00"
                 app:htvCenterSize="18dp"
                 app:htvCenterString="中文"
+                app:htvDrawRightHeight="20dp"
+                app:htvDrawRightPadding="20dp"
+                app:htvDrawRightWidth="20dp"
+                app:htvGravityMode="continuation"
                 app:htvLeftBold="false"
                 app:htvLeftColor="#ff0000"
                 app:htvLeftSize="12dp"
                 app:htvLeftString="abc"
                 app:htvRightBold="false"
-                app:htvDrawRightPadding="20dp"
                 app:htvRightColor="#0000ff"
-                app:htvRightSize="35dp"
-                app:htvRightString="abc"
-                app:htvDrawRightHeight="20dp"
-                app:htvDrawRightWidth="20dp"
-                app:htvGravityMode="average"
-                android:paddingRight="20dp"
-                android:drawableRight="@mipmap/ic_launcher"
-                />
+                app:htvRightSize="18dp"
+                app:htvRightString="中文" />
 
             <!--<com.ljwx.view.HtmlTextView-->
             <!--android:layout_width="match_parent"-->
