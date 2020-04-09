@@ -394,6 +394,7 @@ public final class HtmlTextView extends TextView {
 
     public void setLeftString(String mLeftString) {
         this.mLeftString = mLeftString;
+        requestLayout();
         invalidate();
     }
 
@@ -403,6 +404,7 @@ public final class HtmlTextView extends TextView {
 
     public void setCenterString(String mCenterString) {
         this.mCenterString = mCenterString;
+        requestLayout();
         invalidate();
     }
 
@@ -412,6 +414,7 @@ public final class HtmlTextView extends TextView {
 
     public void setRightString(String mRightString) {
         this.mRightString = mRightString;
+        requestLayout();
         invalidate();
     }
 
@@ -426,6 +429,7 @@ public final class HtmlTextView extends TextView {
 
     public void setSizeLeft(float mLeftSize) {
         mPaintLeft.setTextSize(mLeftSize);
+        requestLayout();
         invalidate();
     }
 
@@ -435,6 +439,7 @@ public final class HtmlTextView extends TextView {
 
     public void setSizeCenter(float centerSize) {
         mPaintCenter.setTextSize(centerSize);
+        requestLayout();
         invalidate();
     }
 
@@ -444,6 +449,7 @@ public final class HtmlTextView extends TextView {
 
     public void setSizeRight(float rightSize) {
         mPaintRight.setTextSize(rightSize);
+        requestLayout();
         invalidate();
     }
 
@@ -491,6 +497,7 @@ public final class HtmlTextView extends TextView {
      */
     public void setBoldLeft(boolean bold) {
         mPaintLeft.setFakeBoldText(bold);
+        requestLayout();
         invalidate();
     }
 
@@ -500,6 +507,7 @@ public final class HtmlTextView extends TextView {
 
     public void setBoldCenter(boolean bold) {
         mPaintCenter.setFakeBoldText(bold);
+        requestLayout();
         invalidate();
     }
 
@@ -509,6 +517,7 @@ public final class HtmlTextView extends TextView {
 
     public void setBoldRight(boolean bold) {
         mPaintRight.setFakeBoldText(bold);
+        requestLayout();
         invalidate();
     }
 
